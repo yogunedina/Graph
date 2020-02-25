@@ -1,0 +1,48 @@
+'''
+Author: Yewande Ogunedina
+Course: ITMD 513
+This program creates a line graph and Bar chart using the given .txt file
+'''
+
+
+import matplotlib.pyplot as plt
+
+#pass into the main () function
+def main ():
+#Open weekly gas average file as r
+  weekly_gas = open("/Users/WendyAdedoyin/Documents/1994_Weekly_Gas_Averages.txt", "r")
+
+#read the gas file and pass into 'gas' variable 
+  gas = weekly_gas.readlines ()
+  weekly_gas.close()
+  index = 0
+  while index < len(gas):
+    gas [index] = gas[index].rstrip('\n')
+    index += 1 
+   
+#create line graph
+  x_coords = list(range(1,53))
+  y_coords = gas 
+  
+#call plot for x and y coordinates
+  plt.plot(x_coords, y_coords)
+  plt.xlim(xmin=1, xmax=52)
+#create limit for x-axis
+  
+  plt.title("1994 Weekly Gas Averages")
+  
+#Add x and y labels 
+  plt.xlabel("Weeks")
+  plt.ylabel('Average Prices')
+  plt.show()
+
+#create bar graph and add color 
+  plt.bar(x_coords, y_coords, color =('r', 'b'))
+  plt.xlabel("Weeks")
+  plt.ylabel("Average Prices")
+  plt.title("1994 Weekly Gas Averages")
+  plt.show()
+  
+#call the function
+main()
+
